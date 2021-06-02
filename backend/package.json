@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "start": "nodemon",
-    "production": "pm2 start index.js --name desafio-maximus-backend"
+    "production": "pm2 start index.js --name desafio-maximus-backend",
+    "dev": "nodemon --inspect=0.0.0.0 ./index.js"
   },
   "keywords": [],
   "author": "",
