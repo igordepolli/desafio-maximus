@@ -7,7 +7,7 @@ services:
       - '3000:3000'
     environment:
       - NODE_ENV=development
-      - DATABASE_URL="postgres://postgres:Multilaser42@database:5432/test"
+      - DATABASE_URL=postgres://postgres:Multilaser42@database:5432/test
     volumes:
       - .:/server
     links:

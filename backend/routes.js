@@ -1,5 +1,5 @@
 const express = require('express');
-
+const sequelize = require('./src/models');
 const routes = express.Router();
 
 routes.get('/', (req, res) => {
