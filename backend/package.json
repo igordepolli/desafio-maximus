@@ -21,7 +21,9 @@
     "moment": "2.22.2",
     "passport": "0.4.0",
     "passport-jwt": "4.0.0",
-    "pg": "^8.6.0"
+    "pg": "^8.6.0",
+    "sequelize": "^6.6.2",
+    "sequelize-cli": "^6.2.0"
   },
   "devDependencies": {
     "nodemon": "^2.0.7"
