@@ -8,20 +8,20 @@ class User extends Model {
         name: DataTypes.STRING,
         userName: DataTypes.STRING,
         email: DataTypes.STRING,
-        password: DataTypes.VIRTUAL,
-        passwordHash: DataTypes.STRING,
+        password: DataTypes.STRING,
       }, {
         sequelize,
       });
 
     this.addHook("beforeSave", async (client) => {
       if (client.password) {
-        client.passwordHash = await bcrypt.hash(client.password, 8);
+        client.password = await bcrypt.hash(client.password, 8);
       }
     });
 
     return this;
   }
+
 }
 
 module.exports = User;
