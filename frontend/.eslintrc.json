@@ -1,0 +1,61 @@
+{
+    "env": {
+      "browser": true,
+      "es6": true
+    },
+    "extends": [
+      "plugin:react/recommended",
+      "airbnb",
+      "plugin:prettier/recommended"
+    ],
+    "plugins": [
+      "react",
+      "react-hooks",
+      "prettier"
+    ],
+    "rules": {
+      "camelcase": "off",
+      "react/jsx-one-expression-per-line": "off",
+      "react/jsx-props-no-spreading": "off",
+      "react-hooks/rules-of-hooks": "error",
+      "react-hooks/exhaustive-deps": "warn",
+      "no-unused-expressions": "warn",
+      "react/jsx-filename-extension": "off",
+      "import/prefer-default-export": "warn",
+      "prettier/prettier": "warn",
+      "react/display-name": "off",
+      "import/no-named-as-default": "off",
+      "import/extensions": "off",
+      "import/order": [
+        "error",
+        {
+          "pathGroups": [
+            {
+              "pattern": "react",
+              "group": "external",
+              "position": "before"
+            },
+            {
+              "pattern": "~/**",
+              "group": "parent",
+              "position": "before"
+            },
+            {
+              "pattern": "@*/**",
+              "group": "external",
+              "position": "after"
+            }
+          ],
+          "pathGroupsExcludedImportTypes": ["react"],
+          "alphabetize": {
+            "order": "asc",
+            "caseInsensitive": true
+          }
+        }
+      ],
+      "sort-imports": ["error", { "ignoreDeclarationSort": true }],
+      "class-methods-use-this": "off",
+      "no-nested-ternary": "off",
+      "no-duplicate-imports": "error"
+    }
+}
