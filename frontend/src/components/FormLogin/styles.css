@@ -1,0 +1,15 @@
+.input {
+    width: 90%;
+    margin: 10px 0 !important;
+    border-color: #4B83FC !important;
+}
+
+.MuiButton-root {
+    width: 90%;
+    background-color: #4B83FC !important;
+    margin: 20px auto !important;
+}
+
+form {
+    margin: 50px auto;
+}
