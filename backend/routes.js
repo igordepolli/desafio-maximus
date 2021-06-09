@@ -5,7 +5,7 @@ const authMiddleware = require('./src/middlewares/auth');
 
 const routes = express.Router();
 
-routes.get('/login', SessionController.store);
+routes.post('/login', SessionController.store);
 routes.post('/signup', UserController.store);
 
 routes.get('/users', authMiddleware, UserController.index);

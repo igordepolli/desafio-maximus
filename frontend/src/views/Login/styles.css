@@ -30,3 +30,19 @@ body {
   width: 450px;
   margin: 30px auto;
 }
+
+.MuiButton-root {
+  width: 90%;
+  background-color: #4B83FC !important;
+  margin: 20px auto !important;
+}
+
+.MuiTextField-root {
+  width: 90%;
+  margin: 10px 0 !important;
+  border-color: #4B83FC !important;
+}
+
+form {
+  margin: 50px auto;
+}
