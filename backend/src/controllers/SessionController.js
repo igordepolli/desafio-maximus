@@ -5,10 +5,7 @@ const jwtConfig = require('../config/jwt');
 
 class SessionController {
   async store(req, res) {
-    const [, hash] = req.headers.authorization.split(' ');
-    const [userName, password] = Buffer.from(hash, 'base64')
-      .toString()
-      .split(':');
+    const { userName, password } = req.body;
 
     const user = await User.findOne({ where: { userName } });
 

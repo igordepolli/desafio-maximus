@@ -22,7 +22,7 @@
       "no-unused-expressions": "off",
       "no-unused-vars": "off",
       "react/jsx-filename-extension": "off",
-      "import/prefer-default-export": "warn",
+      "import/prefer-default-export": "off",
       "prettier/prettier": "warn",
       "react/display-name": "off",
       "import/no-named-as-default": "off",
