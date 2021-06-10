@@ -1,16 +1,15 @@
-import React, { useContext, useState } from 'react';
+import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { Button, Grid, Paper, TextField, Typography } from '@material-ui/core';
 import Link from '@material-ui/core/Link';
-import StoreContext from '../Store/Context';
 import './styles.css';
 
 function initialState() {
-  return { username: '', password: '' };
+  return { name: '', email: '', username: '', password: '', password2: '' };
 }
 
-async function login(credentials) {
-  const data = await fetch('http://localhost:3000/login', {
+async function signUp(credentials) {
+  const data = await fetch('http://localhost:3000/signup', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -20,9 +19,8 @@ async function login(credentials) {
   return data.json();
 }
 
-const Login = () => {
+const SignUp = () => {
   const [values, setValues] = useState(initialState);
-  const { setToken } = useContext(StoreContext);
   const history = useHistory();
 
   function onChange(event) {
@@ -38,16 +36,22 @@ const Login = () => {
   async function onSubmit(event) {
     event.preventDefault();
 
-    const data = await login(values);
+    if (values.password !== values.password2) {
+      // eslint-disable-next-line no-alert
+      alert("Password's don't match!");
+    } else {
+      const data = await signUp(values);
 
-    if (data.token) {
-      setToken(data.token);
-      return history.push('/');
+      if (data.id) {
+        // eslint-disable-next-line no-alert
+        alert('Registro realizado com sucesso!');
+        return history.push('/login');
+      }
+      // eslint-disable-next-line no-alert
+      alert(data.message);
+
+      setValues(initialState);
     }
-    // eslint-disable-next-line no-alert
-    alert(data.message);
-
-    setValues(initialState);
   }
 
   return (
@@ -56,16 +60,32 @@ const Login = () => {
         <Grid item>
           <Grid item>
             <Typography variant="h1" align="center">
-              Log In
+              Registrar-se
             </Typography>
           </Grid>
           <Grid item>
             <form align="center" onSubmit={onSubmit}>
               <TextField
+                name="name"
+                label="Nome"
+                onChange={onChange}
+                value={values.name}
+                required
+              />
+              <TextField
+                name="email"
+                label="E-mail"
+                type="email"
+                onChange={onChange}
+                value={values.email}
+                required
+              />
+              <TextField
                 name="username"
                 label="Usuário"
                 onChange={onChange}
                 value={values.username}
+                required
               />
               <TextField
                 name="password"
@@ -73,16 +93,25 @@ const Login = () => {
                 type="password"
                 onChange={onChange}
                 value={values.password}
+                required
+              />
+              <TextField
+                name="password2"
+                label="Repita a senha"
+                type="password"
+                onChange={onChange}
+                value={values.password2}
+                required
               />
 
               <Button type="submit" variant="contained" color="primary">
-                Log In
+                Registrar-se
               </Button>
             </form>
           </Grid>
           <Grid align="center" item>
-            <Link href="/signup" underline="always">
-              Novo usuário? Registre-se.
+            <Link href="/login" underline="always">
+              Já é usuário? Clique aqui para fazer o login.
             </Link>
           </Grid>
         </Grid>
@@ -91,4 +120,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default SignUp;

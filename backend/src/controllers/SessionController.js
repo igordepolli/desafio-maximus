@@ -5,29 +5,32 @@ const jwtConfig = require('../config/jwt');
 
 class SessionController {
   async store(req, res) {
-    const { userName, password } = req.body;
+    const { username, password } = req.body;
 
-    const user = await User.findOne({ where: { userName } });
+    try {
+      const user = await User.findOne({ where: { username } });
+      if (!user) {
+        throw Error('User not found!');
+      }
 
-    if (!user) {
-      return res.status(401).json({ message: 'Usuário não encontrado!' });
+      const checkPassword = await bcrypt.compare(password, user.password);
+      if (!checkPassword) {
+        throw Error('Incorrect password!');
+      }
+
+      const { id } = user;
+      return res.json({
+        user: {
+          id,
+          username,
+        },
+        token: jwt.sign({ id }, jwtConfig.secret, {
+          expiresIn: jwtConfig.expiresIn,
+        }),
+      });
+    } catch (err) {
+      return res.status(401).json({ message: err.message });
     }
-
-    const checkPassword = await bcrypt.compare(password, user.password);
-    if (!checkPassword) {
-      return res.status(401).json({ message: 'Senha incorreta!' });
-    }
-
-    const { id } = user;
-    return res.json({
-      user: {
-        id,
-        userName,
-      },
-      token: jwt.sign({ id }, jwtConfig.secret, {
-        expiresIn: jwtConfig.expiresIn,
-      }),
-    });
   }
 }
 
