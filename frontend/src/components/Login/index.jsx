@@ -1,14 +1,23 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { Button, Grid, Paper, TextField, Typography } from '@material-ui/core';
 import Link from '@material-ui/core/Link';
-import { Login as LoginUser } from '../../api';
-import Alert from '../../utils/Alert';
 import StoreContext from '../Store/Context';
 import './styles.css';
 
 function initialState() {
   return { userName: '', password: '' };
+}
+
+async function login(credentials) {
+  const data = await fetch('http://localhost:3000/login', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(credentials),
+  });
+  return data.json();
 }
 
 const Login = () => {
@@ -29,16 +38,14 @@ const Login = () => {
   async function onSubmit(event) {
     event.preventDefault();
 
-    try {
-      const data = await LoginUser(values);
+    const data = await login(values);
 
-      if (data.token) {
-        setToken(data.token);
-        return history.push('/');
-      }
-    } catch (err) {
-      Alert(err);
+    if (data.token) {
+      setToken(data.token);
+      return history.push('/');
     }
+    // eslint-disable-next-line no-alert
+    alert(data.message);
 
     setValues(initialState);
   }
@@ -74,7 +81,7 @@ const Login = () => {
             </form>
           </Grid>
           <Grid align="center" item>
-            <Link href="/" underline="always">
+            <Link href="/signup" underline="always">
               Novo usuário? Registre-se.
             </Link>
           </Grid>

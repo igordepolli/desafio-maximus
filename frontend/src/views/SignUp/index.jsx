@@ -1,10 +1,9 @@
 import React from 'react';
-import './styles.css';
 
 const SignUp = () => {
   return (
     <div>
-      <h1>Página principal</h1>
+      <h1>Sign up</h1>
     </div>
   );
 };
