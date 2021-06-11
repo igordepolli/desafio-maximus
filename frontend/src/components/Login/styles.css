@@ -1,46 +1,22 @@
-.container {
-  width: 100%;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-@media (max-width: 900px)
-{
-  .container {
-    padding: 10px;
-    width: 300px;
-   }
-
-}
-
-body {
-  background-color: #E5E5E5;
-}
-
 .MuiTypography-h1 {
-  font-weight: bold !important;
-  font-size: 32px !important;
-  color: #4B83FC;
+  font-size: 24px !important;
+  color: #2d7c99 !important;
 }
 
-.MuiPaper-root {
-  padding: 20px;
-  width: 450px;
-  margin: 30px auto;
+.logoCard {
+  width: 120px !important;
+  min-height: auto !important;
 }
 
 .MuiButton-root {
   width: 90%;
-  background-color: #4B83FC !important;
-  margin: 20px auto !important;
+  background-color: #2d7c99 !important;
+  margin: 40px auto 20px auto !important;
 }
 
 .MuiTextField-root {
   width: 90%;
   margin: 10px 0 !important;
-  border-color: #4B83FC !important;
 }
 
 form {

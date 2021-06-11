@@ -1,7 +1,7 @@
 import React, { useContext, useState } from 'react';
 import { useHistory } from 'react-router-dom';
-import { Button, Grid, Paper, TextField, Typography } from '@material-ui/core';
-import Link from '@material-ui/core/Link';
+import { Button, Grid, TextField, Typography } from '@material-ui/core';
+import Logo from '../../images/logo-maximus2.png';
 import StoreContext from '../Store/Context';
 import './styles.css';
 
@@ -52,41 +52,37 @@ const Login = () => {
 
   return (
     <div className="container">
-      <Paper elevation={10}>
-        <Grid item>
-          <Grid item>
-            <Typography variant="h1" align="center">
-              Log In
-            </Typography>
-          </Grid>
-          <Grid item>
-            <form align="center" onSubmit={onSubmit}>
-              <TextField
-                name="username"
-                label="Usuário"
-                onChange={onChange}
-                value={values.username}
-              />
-              <TextField
-                name="password"
-                label="Senha"
-                type="password"
-                onChange={onChange}
-                value={values.password}
-              />
-
-              <Button type="submit" variant="contained" color="primary">
-                Log In
-              </Button>
-            </form>
-          </Grid>
-          <Grid align="center" item>
-            <Link href="/signup" underline="always">
-              Novo usuário? Registre-se.
-            </Link>
-          </Grid>
+      <Grid item>
+        <Grid align="center" item>
+          <img className="logoCard" src={Logo} alt="logo-maximus" />
         </Grid>
-      </Paper>
+        <Grid item>
+          <Typography variant="h1" align="center">
+            Log In
+          </Typography>
+        </Grid>
+        <Grid item>
+          <form align="center" onSubmit={onSubmit}>
+            <TextField
+              name="username"
+              label="Usuário"
+              onChange={onChange}
+              value={values.username}
+            />
+            <TextField
+              name="password"
+              label="Senha"
+              type="password"
+              onChange={onChange}
+              value={values.password}
+            />
+
+            <Button type="submit" variant="contained" color="primary">
+              Log In
+            </Button>
+          </form>
+        </Grid>
+      </Grid>
     </div>
   );
 };

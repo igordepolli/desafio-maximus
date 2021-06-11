@@ -56,66 +56,59 @@ const SignUp = () => {
 
   return (
     <div className="container">
-      <Paper elevation={10}>
+      <Grid item>
         <Grid item>
-          <Grid item>
-            <Typography variant="h1" align="center">
-              Registrar-se
-            </Typography>
-          </Grid>
-          <Grid item>
-            <form align="center" onSubmit={onSubmit}>
-              <TextField
-                name="name"
-                label="Nome"
-                onChange={onChange}
-                value={values.name}
-                required
-              />
-              <TextField
-                name="email"
-                label="E-mail"
-                type="email"
-                onChange={onChange}
-                value={values.email}
-                required
-              />
-              <TextField
-                name="username"
-                label="Usuário"
-                onChange={onChange}
-                value={values.username}
-                required
-              />
-              <TextField
-                name="password"
-                label="Senha"
-                type="password"
-                onChange={onChange}
-                value={values.password}
-                required
-              />
-              <TextField
-                name="password2"
-                label="Repita a senha"
-                type="password"
-                onChange={onChange}
-                value={values.password2}
-                required
-              />
-
-              <Button type="submit" variant="contained" color="primary">
-                Registrar-se
-              </Button>
-            </form>
-          </Grid>
-          <Grid align="center" item>
-            <Link href="/login" underline="always">
-              Já é usuário? Clique aqui para fazer o login.
-            </Link>
-          </Grid>
+          <Typography variant="h1" align="center">
+            Cadastrar
+          </Typography>
         </Grid>
-      </Paper>
+        <Grid item>
+          <form align="center" onSubmit={onSubmit}>
+            <TextField
+              name="name"
+              label="Nome"
+              onChange={onChange}
+              value={values.name}
+              required
+            />
+            <TextField
+              name="email"
+              label="E-mail"
+              type="email"
+              onChange={onChange}
+              value={values.email}
+              required
+            />
+            <TextField
+              name="username"
+              label="Usuário"
+              onChange={onChange}
+              value={values.username}
+              required
+            />
+            <TextField
+              name="password"
+              label="Senha"
+              type="password"
+              onChange={onChange}
+              value={values.password}
+              required
+            />
+            <TextField
+              name="password2"
+              label="Repita a senha"
+              type="password"
+              onChange={onChange}
+              value={values.password2}
+              required
+            />
+
+            <Button type="submit" variant="contained" color="primary">
+              Cadastrar
+            </Button>
+          </form>
+        </Grid>
+      </Grid>
     </div>
   );
 };
