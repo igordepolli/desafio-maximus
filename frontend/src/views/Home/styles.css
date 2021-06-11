@@ -5,30 +5,24 @@
     align-items: center;
     justify-content: center;
   }
-  
+
 @media (max-width: 900px) {
     .container {
       padding: 10px;
       width: 300px;
     }
-
-    .paperLeft {
-        padding: 10px;
-        width: 30px;
-    }
-
-    .paperRight {
-        padding: 10px;
-        width: 30px;
-    }
 }
 
-.paperLeft {
-    margin-left: 10px !important;
-    width: 450px !important;
+.MuiGrid-item {
+    width: 100%;
 }
 
-.paperRight {
-    width: 1000px !important;
-    height: 564px !important;
+.gridLeft {
+    margin: 30px 10px 10px !important;
+    width: 50% !important;
+}
+
+.gridRight {
+    margin: 0px 30px 10px 0px !important;
+    display: flex;
 }

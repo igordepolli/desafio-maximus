@@ -1,5 +1,5 @@
 import React from 'react';
-import { Divider, Grid, Paper } from '@material-ui/core';
+import { Divider, Grid } from '@material-ui/core';
 import SignUp from '../../components/SignUp';
 import TableUser from '../../components/TableUser';
 import TopBarHome from '../../components/TopBarHome';
@@ -12,15 +12,11 @@ const Home = () => {
         <TopBarHome />
       </Grid>
       <Grid container>
-        <Grid item xs={6}>
-          <Paper elevation={10} className="paperLeft">
-            <SignUp />
-          </Paper>
+        <Grid item xs={4} className="gridLeft">
+          <SignUp />
         </Grid>
-        <Grid item xs={6}>
-          <Paper elevation={10} className="paperRight">
-            <TableUser />
-          </Paper>
+        <Grid item xs className="gridRight">
+          <TableUser />
         </Grid>
       </Grid>
     </Grid>
