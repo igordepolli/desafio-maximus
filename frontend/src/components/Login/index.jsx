@@ -24,7 +24,6 @@ const Login = () => {
     });
   }
 
-  // eslint-disable-next-line consistent-return
   async function onSubmit(event) {
     event.preventDefault();
 
@@ -32,12 +31,13 @@ const Login = () => {
 
     if (data.token) {
       setToken(data.token);
+
       return history.push('/');
     }
-    // eslint-disable-next-line no-alert
     alert(data.message);
-
     setValues(initialState);
+
+    return null;
   }
 
   return (

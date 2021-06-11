@@ -1,9 +1,16 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { AppBar, Link, Toolbar } from '@material-ui/core';
-import './styles.css';
 import Logo from '../../images/logo-maximus.png';
+import StoreContext from '../Store/Context';
+import './styles.css';
 
-const TopBar = () => {
+const TopBarHome = () => {
+  const { setToken } = useContext(StoreContext);
+
+  function logout() {
+    setToken(null);
+  }
+
   return (
     <div>
       <AppBar position="static">
@@ -25,21 +32,13 @@ const TopBar = () => {
           <div className="right">
             <Link
               variant="h6"
-              className="leftLink"
-              color="inherit"
-              underline="none"
-              href="/signup"
-            >
-              REGISTRAR
-            </Link>
-            <Link
-              variant="h6"
               className="rightLink"
               color="inherit"
               underline="none"
+              onClick={logout}
               href="/login"
             >
-              LOGAR
+              LOGOUT
             </Link>
           </div>
         </Toolbar>
@@ -48,4 +47,4 @@ const TopBar = () => {
   );
 };
 
-export default TopBar;
+export default TopBarHome;

@@ -1,16 +1,22 @@
 import React, { useState } from 'react';
-import { useHistory } from 'react-router-dom';
+import { createBrowserHistory } from 'history';
 import { Button, Grid, TextField, Typography } from '@material-ui/core';
 import SignUpApi from '../../api/User/SignUp';
 import './styles.css';
 
 function initialState() {
-  return { name: '', email: '', username: '', password: '', password2: '' };
+  return {
+    name: '',
+    email: '',
+    username: '',
+    password: '',
+    confirmPassword: '',
+  };
 }
 
 const SignUp = () => {
   const [values, setValues] = useState(initialState);
-  const history = useHistory();
+  const history = createBrowserHistory({ forceRefresh: true });
 
   function onChange(event) {
     const { value, name } = event.target;
@@ -21,26 +27,23 @@ const SignUp = () => {
     });
   }
 
-  // eslint-disable-next-line consistent-return
   async function onSubmit(event) {
     event.preventDefault();
 
-    if (values.password !== values.password2) {
-      // eslint-disable-next-line no-alert
+    if (values.password !== values.confirmPassword) {
       alert("Password's don't match!");
     } else {
       const data = await SignUpApi(values);
 
       if (data.id) {
-        // eslint-disable-next-line no-alert
         alert('Registro realizado com sucesso!');
-        return history.push('/login');
-      }
-      // eslint-disable-next-line no-alert
-      alert(data.message);
 
-      setValues(initialState);
+        return history.push('/');
+      }
+      alert(data.message);
     }
+
+    return null;
   }
 
   return (
@@ -84,11 +87,11 @@ const SignUp = () => {
               required
             />
             <TextField
-              name="password2"
+              name="confirmPassword"
               label="Repita a senha"
               type="password"
               onChange={onChange}
-              value={values.password2}
+              value={values.confirmPassword}
               required
             />
 

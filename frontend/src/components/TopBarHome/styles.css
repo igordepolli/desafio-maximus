@@ -1,0 +1,35 @@
+.MuiAppBar-positionStatic {
+    background-color: #1e202b !important;
+    margin-top: 0 !important;
+}
+
+.toolbar {
+    min-height: 5px !important;
+    flex-grow: 1 !important;
+    margin-top: 0 !important;
+    background-color: #1e202b !important;
+    justify-content: space-between !important;
+}
+
+.logo {
+    max-width: 100% !important;
+    height: 35px !important;
+}
+
+.left {
+    flex: 1 !important;
+}
+
+.right {
+    flex: 1 !important;
+    display: flex !important;
+    justify-content: flex-end !important;
+}
+
+.rightLink {
+    font-size: 16px !important;
+}
+
+.title {
+    font-size: 22px !important;
+}

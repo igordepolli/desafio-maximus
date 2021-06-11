@@ -9,9 +9,7 @@ const columns = [
   { field: 'email', headerName: 'E-mail', width: 150 },
 ];
 
-// {id: user.id, name: user.name, username: user.username, email: user.email}
-
-export default function DataGridDemo() {
+const DataGridDemo = () => {
   const [users, setUsers] = useState([]);
   const { token } = useContext(StoreContext);
 
@@ -30,9 +28,7 @@ export default function DataGridDemo() {
     fetchUsers();
   }, [token]);
 
-  return (
-    <div style={{ height: 400, width: '100%' }}>
-      <DataGrid rows={users} columns={columns} pageSize={5} checkboxSelection />
-    </div>
-  );
-}
+  return <DataGrid rows={users} columns={columns} pageSize={9} />;
+};
+
+export default DataGridDemo;
