@@ -1,22 +1,11 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
-import { Button, Grid, Paper, TextField, Typography } from '@material-ui/core';
-import Link from '@material-ui/core/Link';
+import { Button, Grid, TextField, Typography } from '@material-ui/core';
+import SignUpApi from '../../api/User/SignUp';
 import './styles.css';
 
 function initialState() {
   return { name: '', email: '', username: '', password: '', password2: '' };
-}
-
-async function signUp(credentials) {
-  const data = await fetch('http://localhost:3000/signup', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify(credentials),
-  });
-  return data.json();
 }
 
 const SignUp = () => {
@@ -40,7 +29,7 @@ const SignUp = () => {
       // eslint-disable-next-line no-alert
       alert("Password's don't match!");
     } else {
-      const data = await signUp(values);
+      const data = await SignUpApi(values);
 
       if (data.id) {
         // eslint-disable-next-line no-alert

@@ -1,7 +1,7 @@
 import React from 'react';
 import { AppBar, CardMedia, Link, Toolbar } from '@material-ui/core';
 import './styles.css';
-import Logo from '../../images/logo-maximus2.png';
+import Logo from '../../images/logo-maximus.png';
 
 const TopBar = () => {
   return (

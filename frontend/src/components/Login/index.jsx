@@ -1,23 +1,13 @@
 import React, { useContext, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { Button, Grid, TextField, Typography } from '@material-ui/core';
-import Logo from '../../images/logo-maximus2.png';
+import LoginApi from '../../api/User/Login';
+import Logo from '../../images/logo-maximus.png';
 import StoreContext from '../Store/Context';
 import './styles.css';
 
 function initialState() {
   return { username: '', password: '' };
-}
-
-async function login(credentials) {
-  const data = await fetch('http://localhost:3000/login', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify(credentials),
-  });
-  return data.json();
 }
 
 const Login = () => {
@@ -38,7 +28,7 @@ const Login = () => {
   async function onSubmit(event) {
     event.preventDefault();
 
-    const data = await login(values);
+    const data = await LoginApi(values);
 
     if (data.token) {
       setToken(data.token);
