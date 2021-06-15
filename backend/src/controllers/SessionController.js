@@ -10,12 +10,12 @@ class SessionController {
     try {
       const user = await User.findOne({ where: { username } });
       if (!user) {
-        throw Error('User not found!');
+        throw new Error('User not found!');
       }
 
       const checkPassword = await bcrypt.compare(password, user.password);
       if (!checkPassword) {
-        throw Error('Incorrect password!');
+        throw new Error('Incorrect password!');
       }
 
       const { id } = user;

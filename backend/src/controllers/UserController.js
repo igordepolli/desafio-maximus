@@ -30,7 +30,6 @@ class UserController {
       const user = await User.create({
         name, username, email, password,
       });
-      // user.password = undefined;
       return res.json(user);
     } catch (err) {
       return res.status(400).json({ message: err.message });
